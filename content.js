@@ -90,58 +90,58 @@ function getParameterByName(name, url) {
 
 
 function getUrl(sendResponse) {
-	var urls = [],
-		containers = document.getElementsByClassName('_5wvh'),
-		data = [];
+    var urls = [],
+        containers = document.getElementsByClassName('_5wvh'),
+        data = [];
 
-	for(var i = 0; i < containers.length; i++) {
-		var container = containers[i],
-			linkAnchor = getAnchor(container, '_5yjp'),
-			archiveAnchor =  getAnchor(container, '_4bl8');
+    for(var i = 0; i < containers.length; i++) {
+        var container = containers[i],
+            linkAnchor = getAnchor(container, '_5yjp'),
+            archiveAnchor =  getAnchor(container, '_4bl8');
 
-		if (!linkAnchor || !archiveAnchor) continue;
+        if (!linkAnchor || !archiveAnchor) continue;
 
-		var url = linkAnchor.href;
-		if (url.includes(FACEBOOK_LINK_URL)) {
-			url = getParameterByName('u', url);
-		}
+        var url = linkAnchor.href;
+        if (url.includes(FACEBOOK_LINK_URL)) {
+            url = getParameterByName('u', url);
+        }
 
-		data.push({
-			url: url,
-			xpath: createXPathFromElement(archiveAnchor),
-		})
-	}
+        data.push({
+            url: url,
+            xpath: createXPathFromElement(archiveAnchor),
+        })
+    }
 
-	sendResponse(data);
+    sendResponse(data);
 }
 
 
 function archive(xpath) {
-	fireEvent(lookupElementByXPath(xpath), 'click');
+    fireEvent(lookupElementByXPath(xpath), 'click');
 }
 
 
 function getAnchor(parent, className) {
-	var div = parent.getElementsByClassName(className);
-	if (div.length == 0) return;
+    var div = parent.getElementsByClassName(className);
+    if (div.length == 0) return;
 
-	var links = div[0].getElementsByTagName('a');
-	if (links.length == 0) return;
+    var links = div[0].getElementsByTagName('a');
+    if (links.length == 0) return;
 
-	return links[0];
+    return links[0];
 }
 
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-	console.log(msg, sender, sendResponse);
+    console.log(msg, sender, sendResponse);
 
-	switch (msg.message) {
-		case 'getUrl':
-			getUrl(sendResponse);
-			break;
+    switch (msg.message) {
+        case 'getUrl':
+            getUrl(sendResponse);
+            break;
 
-		case 'archive':
-			archive(msg.xpath);
-			break;
-	}
+        case 'archive':
+            archive(msg.xpath);
+            break;
+    }
 });
