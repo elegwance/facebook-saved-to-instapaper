@@ -9,6 +9,12 @@
         "https://www.instapaper.com/*"
     ],
 
+    "icons": {
+        "16": "icon-16.png",
+        "48": "icon-48.png",
+        "128": "icon-128.png"
+    },
+
     "background": {
         "scripts": ["jquery-2.2.4.min.js", "background.js"],
         "persistent": false
