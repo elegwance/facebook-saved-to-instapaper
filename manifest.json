@@ -1,7 +1,7 @@
 {
     "name": "Facebook Saved to Instapaper",
     "description": "add link in Facebook saved to Instapaper on startup",
-    "version": "1.0",
+    "version": "1.0.1",
 
     "permissions": [
         "tabs",
