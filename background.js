@@ -25,6 +25,8 @@ function save(url, xpath) {
 
 
 chrome.windows.onCreated.addListener(function(windows) {
+    if (windows.type != 'normal') return;
+
     chrome.tabs.create({ url: FACEBOOK_SAVE_URL, active: false }, function(tab) {
         currentTab = tab;
 
