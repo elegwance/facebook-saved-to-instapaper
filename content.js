@@ -97,7 +97,7 @@ function getUrl(sendResponse) {
     for(var i = 0; i < containers.length; i++) {
         var container = containers[i],
             linkAnchor = getAnchor(container, '_5yjp'),
-            archiveAnchor =  getAnchor(container, '_3-z3');
+            archiveAnchor =  getAnchor(container, '_3a7p');
 
         if (!linkAnchor || !archiveAnchor) continue;
 
